@@ -1,12 +1,37 @@
-// Type Assertions
+// Interfaces ( how we can use custom TYPES IN typescript)
 
-let message = "abc";
-let endWithC = message.endsWith("c");
+//insted of passing x,y as a parameter we can pass a point object
+let drawPoint = (point) => {
+  //..
+};
 
-// another way of type Assertions when type is any
-let message2;
-message2 = "abc";
-let endWIthC2 = (<string>message2).endsWith("c");
+// is only expected x,y we can have anything else to fix this  we use Annotation
+drawPoint({
+  x: 1,
+  y: 2,
+});
 
-// Alternative way
-let alternativeWay = (message2 as string).endsWith("c");
+// Annotation is to annotate the parameter
+let drawPoint2 = (point2: { x: number; y: number }) => {
+  //..
+};
+drawPoint2({
+  x: 1,
+  y: 2,
+});
+
+//
+// A better approch is to use Interfaces
+// 1) at the top define an interface (we use Pascal naming convantion)
+// and set the type of that paramter to Point
+interface Point {
+  x: number;
+  y: number;
+}
+let drawPoint3 = (point3: Point) => {
+  //..
+};
+drawPoint3({
+  x: 1,
+  y: 2,
+});
