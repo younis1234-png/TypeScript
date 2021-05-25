@@ -1,30 +1,12 @@
-let count = 5;
-count = "a";
+// Type Assertions
 
-// any variable, using type annotations
-let a: number; // we set that type of variable to number
-a = 1;
-// a = true;
-// a = "a";
+let message = "abc";
+let endWithC = message.endsWith("c");
 
-// our different tupe
-let b: boolean;
-let c: string;
-let d: any;
-let e: number[] = [1, 2, 3];
-let f: any[] = [1, true, "a"];
+// another way of type Assertions when type is any
+let message2;
+message2 = "abc";
+let endWIthC2 = (<string>message2).endsWith("c");
 
-//Our type ENUM, working with related constants
-const ColorRed = 0;
-const ColorGreen = 2;
-const ColorBlue = 2;
-
-// our we can use ENUM FOR MORE CLEANER
-enum Color {
-  Red = 1,
-  Green = 2,
-  Blue = 3,
-}
-// we done need to say = 1 or =2 is automatically assigned
-
-let backgroundColor = Color.Red;
+// Alternative way
+let alternativeWay = (message2 as string).endsWith("c");
