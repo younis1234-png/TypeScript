@@ -1,37 +1,25 @@
-// Interfaces ( how we can use custom TYPES IN typescript)
+// Objects
 
-//insted of passing x,y as a parameter we can pass a point object
-let drawPoint = (point) => {
-  //..
-};
-
-// is only expected x,y we can have anything else to fix this  we use Annotation
-drawPoint({
-  x: 1,
-  y: 2,
-});
-
-// Annotation is to annotate the parameter
-let drawPoint2 = (point2: { x: number; y: number }) => {
-  //..
-};
-drawPoint2({
-  x: 1,
-  y: 2,
-});
-
-//
-// A better approch is to use Interfaces
-// 1) at the top define an interface (we use Pascal naming convantion)
-// and set the type of that paramter to Point
-interface Point {
+// this Point is an class
+class Point {
   x: number;
   y: number;
+
+  draw() {
+    console.log(`X: ${this.x}  Y: ${this.y} `);
+  }
+
+  getDistance(another: Point) {
+    //..
+  }
 }
-let drawPoint3 = (point3: Point) => {
-  //..
-};
-drawPoint3({
-  x: 1,
-  y: 2,
-});
+
+//this (point) is an object
+let point = new Point();
+point.x = 1;
+point.y = 2;
+point.draw();
+
+// When defining an object of a custom type,
+// we need to explicitly allocate memory to it (new Point())
+// output : X: 1  Y: 2
