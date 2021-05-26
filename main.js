@@ -1,23 +1,36 @@
-//Access Modifier
+//Properties
 // this Point is an class
 var Point = /** @class */ (function () {
-    // adding ? to make it optional
-    function Point(x, y) {
-        this.x = x;
-        this.y = y;
+    function Point(_x, _y) {
+        this._x = _x;
+        this._y = _y;
     }
     // method
     Point.prototype.draw = function () {
         console.log("X: " + this.x + "  Y: " + this.y + " ");
     };
+    Object.defineProperty(Point.prototype, "x", {
+        // we can get access to X from Outside but we have access of it here
+        // This allow us to get access to the properties outside this bloc
+        // GETTER METHOD
+        get: function () {
+            return this.x;
+        },
+        // get a new value of X (SETTER METHOD)
+        set: function (value) {
+            if (value < 0) {
+                throw new Error(" Value can't not be less than 0");
+            }
+            // otherwise x = value
+            this.x = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return Point;
 }());
 //this (point) is an object
 var point = new Point(1, 2);
-// We can change the x and y values
-// by doing point.x =3 or....
-// but how can we avoid that??
-// Access Modifier: we can apply this to a MEMBER OF A CLASS TO CONTROL IT ACCESSIBILITY
-// Access modifier is either = default is Public , Private, Protected
-// Adding private to x you can see it when you do (point.x)
+var X = point.x;
+point.x = 10;
 point.draw();
